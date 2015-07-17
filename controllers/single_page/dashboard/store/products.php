@@ -80,6 +80,8 @@ class Products extends DashboardPageController
         $gl->filterByAssignable();
         $usergroups = $gl->get();
 
+        $usergrouparray = array();
+
         foreach($usergroups as $ug) {
             if ( $ug->gName != 'Administrators') {
                 $usergrouparray[$ug->gID] = $ug->gName;
@@ -113,6 +115,8 @@ class Products extends DashboardPageController
         $gl->setItemsPerPage(1000);
         $gl->filterByAssignable();
         $usergroups = $gl->get();
+
+        $usergrouparray = array();
 
         foreach($usergroups as $ug) {
             if ( $ug->gName != 'Administrators') {
@@ -161,7 +165,6 @@ class Products extends DashboardPageController
             $templates[$pt->getPageTemplateID()] = $pt->getPageTemplateName();
         }
         $this->set('pageTemplates',$templates);
-        $this->set("pkgconfig",$pkg->getConfig());
     }
     public function save()
     {
